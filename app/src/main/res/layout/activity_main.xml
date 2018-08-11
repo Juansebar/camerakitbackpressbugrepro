@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:mContext="com.medcords.mhcpanel.activity.CreatePatientRecordActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tvScreenTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Capture Image"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <View
+            android:id="@+id/topBarDivider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/tvScreenTitle"
+            android:layout_toRightOf="@+id/tvScreenTitle"
+            android:background="@android:color/white" />
+
+    </RelativeLayout>
+
+    <com.camerakit.CameraKitView
+        android:id="@+id/cameraKitView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlBottomBar"
+        android:layout_below="@id/rlTopBar"
+        android:keepScreenOn="true"
+        app:camera_facing="back"
+        app:camera_flash="on" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/ivFlashOrRejectImage"-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp"-->
+    <!--android:layout_alignEnd="@+id/cameraKitView"-->
+    <!--android:layout_alignRight="@+id/cameraKitView"-->
+    <!--android:layout_alignTop="@+id/cameraKitView"-->
+    <!--android:layout_margin="16dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@mipmap/ic_flash_on" />-->
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdvCapturedImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlBottomBar"
+        android:layout_below="@id/rlTopBar"
+        android:visibility="visible"
+        app:actualImageScaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/rlBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:id="@+id/rlThumbnail"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:visibility="invisible">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdvThumbnail"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerInParent="true"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tvThumbnailCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:maxEms="3"
+                android:minHeight="0dp"
+                android:minWidth="20dp"
+                android:padding="2dp"
+                android:text="03"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btDone"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent"
+            android:text="DONE"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/btCapture"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:background="@android:color/darker_gray"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:onClick="onCaptureButtonClicked"
+            android:padding="8dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_camera"
+            tools:ignore="NewApi" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/flFlash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rlBottomBar"
+        android:layout_below="@+id/rlTopBar"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
